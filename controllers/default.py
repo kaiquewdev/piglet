@@ -10,12 +10,8 @@
 #########################################################################
 
 def index():
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-    """
-    response.flash = "Welcome to web2py!"
-    return dict(message=T('Hello World'))
+    response.flash = 'Welcome'
+    return {}
 
 def user():
     """
@@ -31,7 +27,9 @@ def user():
         @auth.requires_permission('read','table name',record_id)
     to decorate functions that need access control
     """
-    return dict(form=auth())
+    return {
+        'form': auth()
+    }
 
 
 def download():
@@ -67,5 +65,6 @@ def data():
     or with the signed load operator
       LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
     """
-    return dict(form=crud())
-
+    return {
+        'form': crud()
+    }
