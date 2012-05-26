@@ -11,7 +11,8 @@ var Piglet = (function ( window, $ ) {
 	var log = function ( input ) {
 		return console.log( input );
 	};
-	// Alert
+	
+	// Alert behavior
 	var enableAlert = function ( element, speed ) {
 		var output = false;
 
@@ -21,9 +22,10 @@ var Piglet = (function ( window, $ ) {
 			$alert.find('.close').bind('click', function () {
 				$alert.fadeTo( speed , 0, function () {
 					$(this).alert('close');
-					output = true;
 				});
 			});
+
+			output = $alert;
 		}
 
 		return output;
@@ -37,7 +39,7 @@ var Piglet = (function ( window, $ ) {
 		// Run main fuction of app
 		var self = this;
 		// Enable flash alert
-		enableAlert( '#flash-alert', 'normal' );
+		log( enableAlert( '#flash-alert', 'normal' ) );
 
 		return self;
 	};
@@ -48,6 +50,5 @@ var Piglet = (function ( window, $ ) {
 
 // Execute main app
 $(function () {
-	Piglet.tests();
 	Piglet.run();
 });
